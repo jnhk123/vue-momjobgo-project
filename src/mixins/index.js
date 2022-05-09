@@ -17,27 +17,11 @@ export default {
          */
         async $api(url, method, data, errorCallback) {
 
-            return axios({
-                headers: {
-                    Authorization: `Bearer ${store.state.user.token}`
-                },
-                method: method
-                , url
-                , data
-            }).catch(e => {
-                if(e.response.status === this.HTTP_UNAUTHORIZED 
-                    && e.response?.data?.error 
-                    && e.response.data.error === 'Invalid token'){
+            // 공통 API를 구현한다.
 
-                    alert('로그인 정보가 만료되었습니다.'); 
-                    store.dispatch('user/setToken', null);
+            // 토큰이 유효하지 않을때 로그인 화면으로 전환하도록 한다.
 
-                } else if(errorCallback){
-                    errorCallback(e.response);
-                } else if(e.response?.data?.error){
-                    alert(e.response.data.error);
-                }
-            });
+            // 토큰이 유효하지 않을때는 status는 401이며, error.response.data.error 값이 'Invalid token' 이다.
             
         },
 
