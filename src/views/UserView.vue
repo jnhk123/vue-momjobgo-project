@@ -23,7 +23,6 @@
 </template>
 
 <script>
-import { mapActions } from "vuex";
 
 export default {
 
@@ -46,19 +45,8 @@ export default {
 
     methods: {
 
-        ...mapActions('user', ['setName', 'setId', 'setToken']),
-
         async refreshUser(){
             // 유저 정보를 호출하고 vuex의 유저정보를 같이 갱신해 준다.
-            const {data : user} = await this.$api(`/api/auth/user`, 'get')
-            this.setId(user.id);
-            this.setName(user.name);
-
-            this.user.id = user.id;
-            this.user.name = user.name;
-            this.user.pwd = '';
-            this.user.newPwd = '';
-            this.checkPwd = '';
         },
 
         async modify(){
@@ -69,35 +57,14 @@ export default {
                 return false;
             }
 
-            if(!confirm('정말로 수정하시겠습니까?')){
-                return false;
-            }
-
             // 유저 정보를 수정. ( 새로운 비밀번호를 입력할때 newPwd에 값을 넣으면 됨. 비밀번호를 변경하지 않을때에는 newPwd에 null 값을 넣으면 됨.)
-            const response = await this.$api(`/api/auth/user`, 'patch', {
-                ...this.user,
-                newPwd : this.user.newPwd === '' ? null : this.user.newPwd
-            });
-
-            if(response.status === this.HTTP_OK || response.status === this.HTTP_CREATED){
-                alert("수정 되었습니다.");
-                this.refreshUser();
-            }
 
         },
 
         async deleteUser(){
 
             // 유저 정보를 삭제.
-            if(!confirm('정말로 탈퇴하시겠습니까?')){
-                return false;
-            }
 
-            const response = await this.$api(`/api/auth/user`, 'delete');
-            if(response.status === this.HTTP_OK){
-                alert('삭제 되었습니다.');
-                this.setToken('');
-            }
         }
     },
 
