@@ -49,12 +49,8 @@ export default {
             }
         },
 
-        async getUserInfo(){    
-            if(this.hasToken){
-                const {data : user} = await this.$api(`/api/auth/user`, 'get');
-                this.setId(user.id);
-                this.setName(user.name);
-            }
+        getUserInfo(){    
+            // 유저정보를 가져오는 로직을 구현하세요.
         }
     },
 
