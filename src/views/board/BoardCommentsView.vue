@@ -62,6 +62,8 @@
             async callCommentList() {
                 /**
                  * 댓글 조회.
+                 * 
+                 * bno가 0일때는 조회 호출하지 않음.
                  */
                 if(this.bno !== 0){
                     const response = await this.$api(`/api/board/comment/${this.bno}`, 'GET', null);
