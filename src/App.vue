@@ -41,7 +41,7 @@ export default {
 
         checkToken(){
             const nowPath = window.location.pathname;
-            // 현재 토큰이 있는지 확인 .
+            // 현재 토큰이 있는지 확인 .daadsda
             if( this.hasToken && nowPath !== this.getPath('home')){
                 // 토큰이 존재할 때 홈으로 이동.
                 this.$router.push({ path: this.menuList.home.path });
