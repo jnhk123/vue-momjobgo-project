@@ -173,6 +173,7 @@
                 },
                 { text: "제목", value: "title" },
                 { text: "추천수", value: "likeCnt" },
+                // 비 추천수 추가 ( hateCnt )
                 { text: "비추천수", value: "hateCnt" },
                 { text: "작성자", value: "writer" },
                 { text: "등록일", value: "createdAt" },
