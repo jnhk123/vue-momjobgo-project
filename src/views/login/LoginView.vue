@@ -36,7 +36,7 @@
 <script>
     import SignUpModalViewVue from "./SignUpModalView.vue";
 
-    import { mapActions } from "vuex"
+    import { mapActions, mapGetters } from "vuex"
 
     export default {
         data : () => ({
@@ -51,6 +51,10 @@
 
         beforeDestroy() {
             this.setAllVisible(true);
+        },
+
+        computed : {
+            ...mapGetters('page', ['basePath'])
         },
 
         methods : {
@@ -72,7 +76,7 @@
                 if(response?.status === this.HTTP_OK){
                     const token = response.data.token;
                     this.setToken(token);
-                    location.href='/'
+                    location.href=this.basePath;
                 } 
             }
         },
