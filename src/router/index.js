@@ -39,6 +39,7 @@ router.afterEach(function (to, from) {
  */
 function getPageList() {
     const pageList = new Array();
+
     Object.entries(store.getters['page/menuList']).forEach(([key, item])=>{
         pageList.push(item);
     });
