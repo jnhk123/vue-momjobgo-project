@@ -23,7 +23,6 @@ export default new Vuex.Store({
   },
   plugins : [createPersistedState({
     paths : ["user"],
-    // storage : window.sessionStorage,
     storage : {
       getItem: (key) => ls.get(key),
       setItem: (key, value) => ls.set(key, value),
