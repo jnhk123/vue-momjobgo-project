@@ -76,6 +76,11 @@
                 if(response?.status === this.HTTP_OK){
                     const token = response.data.token;
                     this.setToken(token);
+                    
+                    const {data : user} = await this.$api(`/api/auth/user`, 'get');
+                    this.setId(user.id);
+                    this.setName(user.name);
+
                     location.href=this.basePath;
                 } 
             }

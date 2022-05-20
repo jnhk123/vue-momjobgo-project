@@ -51,23 +51,10 @@ export default {
             }
         },
 
-        async getUserInfo(){
-            /**
-             * 토큰이 있을 때 유저 정보 호출 구현.
-             * 
-             * vuex 유저정보 갱신
-             */
-            if(this.hasToken){
-                const {data : user} = await this.$api(`/api/auth/user`, 'get');
-                this.setId(user.id);
-                this.setName(user.name);
-            }
-        }
     },
 
     created() {
         this.checkToken();
-        this.getUserInfo();
     },
 
     watch: {

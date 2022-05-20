@@ -7,7 +7,7 @@ export default {
     namespaced : true,
 
     state : {
-        token : sessionStorage.getItem('access-token'),
+        token : '',
         user : {
             id : '',
             name : ''
@@ -39,7 +39,6 @@ export default {
 
         setToken(state, token){
             state.token = token;
-            sessionStorage.setItem('access-token', token);
         },
 
         setId(state, id){
